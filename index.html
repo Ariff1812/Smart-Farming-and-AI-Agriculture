@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agronomy Twin: Neural Derivative Optimization Engine</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .neon-glow-emerald { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
+
+    <header class="border-b border-slate-800 bg-slate-900/60 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center rounded-md bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20 animate-pulse">AI Digital Twin Active</span>
+                    <span class="text-xs text-slate-500 mono">MPOB-Ref: Coastal-Soil/Mature-Palms_2026</span>
+                </div>
+                <h1 class="text-xl md:text-2xl font-bold text-slate-100 mt-1 tracking-tight">Biokinetic Derivative Simulator</h1>
+            </div>
+            <div class="flex items-center gap-4 bg-slate-950/80 p-2 rounded-xl border border-slate-800 w-full sm:w-auto">
+                <div>
+                    <label class="block text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Nitrogen Cost (MYR/kg)</label>
+                    <input type="number" id="costN" value="4.50" step="0.10" class="w-24 bg-slate-900 text-sm font-semibold text-emerald-400 rounded px-2 py-1 border border-slate-700 outline-none focus:border-emerald-500 mono">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">FFB Market Value (MYR/Tonne)</label>
+                    <input type="number" id="priceFFB" value="850" step="10" class="w-28 bg-slate-900 text-sm font-semibold text-emerald-400 rounded px-2 py-1 border border-slate-700 outline-none focus:border-emerald-500 mono">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+        
+        <section class="lg:col-span-4 flex flex-col gap-6">
+            
+            <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl"></div>
+                
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Bio-Mathematical Calculus Model
+                </h2>
+
+                <div class="mb-4 bg-slate-950 p-3.5 rounded-xl border border-slate-800/60 group hover:border-emerald-500/30 transition-colors">
+                    <div class="flex justify-between text-xs text-slate-500 font-medium mb-1">
+                        <span>Yield Dynamic Function</span>
+                        <span class="mono text-emerald-400">$f(x)$</span>
+                    </div>
+                    <div class="text-base font-bold text-slate-200 tracking-wide mono py-1 select-all">
+                        f(x) = -0.0016x² + 0.64x + 12
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                        Outputs total Fresh Fruit Bunch yield ($t/ha/yr$) against chemical Nitrogen inputs ($x$ in $kg/ha$).
+                    </p>
+                </div>
+
+                <div class="mb-4 bg-slate-950 p-3.5 rounded-xl border border-slate-800/60 group hover:border-amber-500/30 transition-colors">
+                    <div class="flex justify-between text-xs text-slate-500 font-medium mb-1">
+                        <span>Marginal Bio-Efficiency Curve</span>
+                        <span class="mono text-amber-400">$f'(x) = \frac{dy}{dx}$</span>
+                    </div>
+                    <div class="text-base font-bold text-slate-200 tracking-wide mono py-1 select-all">
+                        f'(x) = -0.0032x + 0.64
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                        Calculates instant biological absorption rate. Represents efficiency transformation velocity.
+                    </p>
+                </div>
+
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/60 group hover:border-blue-500/30 transition-colors">
+                    <div class="flex justify-between text-xs text-slate-500 font-medium mb-1">
+                        <span>Marginal Net Profit Derivative</span>
+                        <span class="mono text-blue-400">$P'(x) = R \cdot f'(x) - C$</span>
+                    </div>
+                    <div class="text-xs font-bold text-slate-300 mono py-1 tracking-tight">
+                        P'(x) = [Market Price × f'(x)] - Cost
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                        Finds the point where spending RM1 more on fertilizer brings in exactly RM1 of crop value.
+                    </p>
+                </div>
+            </div>
+
+            <div id="optimizerCard" class="bg-slate-900 rounded-2xl border border-slate-800 p-5 flex-grow flex flex-col justify-between shadow-xl">
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-500"></span> Analytical Maxima Points
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/50 flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-medium text-slate-400">Biological Max Yield Peak</p>
+                                <p class="text-[11px] text-slate-500 mono">Calculated at $f'(x) = 0$</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold text-slate-200 mono">200.0 <span class="text-xs text-slate-500 font-normal">kg/ha</span></p>
+                                <p class="text-xs text-emerald-400 mono">76.00 t/ha</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/50 flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-medium text-slate-400">Economic Profit Optimum</p>
+                                <p class="text-[11px] text-slate-500 mono">Calculated at $P'(x) = 0$</p>
+                            </div>
+                            <div class="text-right">
+                                <p id="econPeakX" class="text-sm font-bold text-slate-200 mono">--</p>
+                                <p id="econPeakY" class="text-xs text-blue-400 mono">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 leading-relaxed">
+                    💡 <strong>Advanced Application Tip:</strong> Notice how the economic optimum peak changes instantly when you adjust fertilizer cost or palm oil prices above. AI engines use this dynamic shift to continuously re-calibrate smart field machinery.
+                </div>
+            </div>
+        </section>
+
+        <section class="lg:col-span-8 flex flex-col gap-6">
+            
+            <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 flex flex-col h-[400px] md:h-[480px] shadow-xl relative">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-100">Dynamic Bio-Response Modeling</h3>
+                        <p class="text-xs text-slate-400">Interact anywhere across the continuous spectrum to fire AI calculations</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-xs font-medium text-slate-400">
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-emerald-500 inline-block"></span> Yield Curve</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-amber-500 inline-block"></span> Derivative Line</span>
+                    </div>
+                </div>
+
+                <div class="relative w-full flex-grow">
+                    <canvas id="dualCoreChart"></canvas>
+                </div>
+            </div>
+
+            <div id="telemetryCard" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl transition-all duration-300 relative overflow-hidden">
+                <div id="statusBar" class="absolute left-0 top-0 bottom-0 w-2 bg-slate-700 transition-colors duration-300"></div>
+
+                <div id="telemetryPrompt" class="text-center py-6 text-sm text-slate-500 font-medium">
+                    🔍 Click anywhere along the graph parameters above to feed the micro-sensor telemetry matrix.
+                </div>
+
+                <div id="telemetryContent" class="hidden pl-2">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-b border-slate-800/60 pb-4 mb-4">
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Nitrogen Rate ($x$)</span>
+                            <span id="telX" class="text-lg font-bold mono text-slate-100">0</span> <span class="text-xs text-slate-400">kg/ha</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Estimated Yield ($f(x)$)</span>
+                            <span id="telY" class="text-lg font-bold mono text-emerald-400">0</span> <span class="text-xs text-slate-400">t/ha/yr</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Bio-Derivative ($f'(x)$)</span>
+                            <span id="telDeriv" class="text-lg font-bold mono text-amber-400">0</span> <span class="text-xs text-slate-400">t/kg</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Net Return Vector ($P'(x)$)</span>
+                            <span id="telProfitDeriv" class="text-lg font-bold mono">0</span> <span class="text-xs text-slate-400">RM/kg</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">AI Interpretation Engine Analysis</span>
+                        <p id="telExplanation" class="text-sm leading-relaxed text-slate-300"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-600 font-medium tracking-wide">
+        🤖 Integrated Advanced Agro-Product Technology Calculus Environment • Built 2026.
+    </footer>
+
+    <script>
+        // Mathematical Logic Definition Block
+        const f = (x) => -0.0016 * Math.pow(x, 2) + 0.64 * x + 12;
+        const df = (x) => -0.0032 * x + 0.64;
+
+        // Interactive Input Controls References
+        const costInput = document.getElementById('costN');
+        const priceInput = document.getElementById('priceFFB');
+
+        // Dynamic Economic Optimizer Solver Formula
+        function computeOptimalPoints() {
+            const costPerKg = parseFloat(costInput.value) || 0;
+            const pricePerTonne = parseFloat(priceInput.value) || 0;
+
+            // P'(x) = pricePerTonne * (-0.0032x + 0.64) - costPerKg = 0
+            // pricePerTonne * -0.0032x + pricePerTonne * 0.64 - costPerKg = 0
+            // x = (costPerKg - 0.64 * pricePerTonne) / (-0.0032 * pricePerTonne)
+            let optimalEconX = 0;
+            if (pricePerTonne > 0) {
+                optimalEconX = (costPerKg - (0.64 * pricePerTonne)) / (-0.0032 * pricePerTonne);
+            }
+            
+            optimalEconX = Math.max(0, Math.min(300, optimalEconX)); 
+            const optimalEconY = f(optimalEconX);
+            const netProfitTotal = (optimalEconY * pricePerTonne) - (optimalEconX * costPerKg);
+
+            document.getElementById('econPeakX').innerText = `${optimalEconX.toFixed(1)} kg/ha`;
+            document.getElementById('econPeakY').innerText = `Net Profit: RM ${netProfitTotal.toFixed(0)}/ha`;
+            
+            return { optimalEconX };
+        }
+
+        // Generating continuous multi-variate dataset tracks for Chart presentation
+        const xData = [];
+        const yYieldData = [];
+        const yDerivData = [];
+
+        for(let x = 0; x <= 300; x += 5) {
+            xData.push(x);
+            yYieldData.push(f(x).toFixed(3));
+            yDerivData.push(df(x).toFixed(3));
+        }
+
+        // Instantiate Chart Framework
+        const ctx = document.getElementById('dualCoreChart').getContext('2d');
+        const dualCoreChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xData,
+                datasets: [
+                    {
+                        label: 'Crop Yield f(x) (t/ha/yr)',
+                        data: yYieldData,
+                        borderColor: '#10b981', // Emerald
+                        borderWidth: 2.5,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: "Bio-Derivative f'(x) (t/kg)",
+                        data: yDerivData,
+                        borderColor: '#f59e0b', // Amber
+                        borderWidth: 1.5,
+                        borderDash: [4, 4],
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        yAxisID: 'yDerivative'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { color: '#1e293b' },
+                        ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono' } },
+                        title: { display: true, text: 'Active Nitrogen Input Variable (kg/ha)', color: '#64748b', font: { weight: 'bold' } }
+                    },
+                    y: {
+                        position: 'left',
+                        grid: { color: '#1e293b' },
+                        ticks: { color: '#10b981', font: { family: 'JetBrains Mono' } },
+                        title: { display: true, text: 'Total Crop Production Capacity (t/ha/yr)', color: '#10b981' }
+                    },
+                    yDerivative: {
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: '#f59e0b', font: { family: 'JetBrains Mono' } },
+                        title: { display: true, text: "Instantaneous Growth Rate f'(x) (t/kg change)", color: '#f59e0b' }
+                    }
+                },
+                onClick: (event, activeElements) => {
+                    if (activeElements.length > 0) {
+                        const datasetIndex = activeElements[0].index;
+                        const targetedX = xData[datasetIndex];
+                        executeTelemetryInference(targetedX);
+                    }
+                },
+                animation: { duration: 1400, easing: 'easeOutQuint' }
+            }
+        });
+
+        // Telemetry Engine Evaluator and Translator
+        function executeTelemetryInference(x) {
+            const yieldY = f(x);
+            const biologicalDerivative = df(x);
+            
+            const costPerKg = parseFloat(costInput.value) || 0;
+            const pricePerTonne = parseFloat(priceInput.value) || 0;
+            
+            // Marginal Net Profit Derivative Formulation: P'(x) = R * f'(x) - C
+            // Converts biological yield change directly into ringgit values
+            const economicDerivative = (pricePerTonne * biologicalDerivative) - costPerKg;
+
+            // UI Reveal Engine
+            document.getElementById('telemetryPrompt').classList.add('hidden');
+            document.getElementById('telemetryContent').classList.remove('hidden');
+
+            document.getElementById('telX').innerText = x;
+            document.getElementById('telY').innerText = yieldY.toFixed(2);
+            document.getElementById('telDeriv').innerText = (biologicalDerivative >= 0 ? '+' : '') + biologicalDerivative.toFixed(3);
+            
+            const profitDerivElement = document.getElementById('telProfitDeriv');
+            profitDerivElement.innerText = (economicDerivative >= 0 ? '+' : '') + economicDerivative.toFixed(2);
+
+            // Interface Accent Elements Updates
+            const statusBar = document.getElementById('statusBar');
+            const profitVectorColor = economicDerivative >= 0 ? 'text-emerald-400' : 'text-rose-500';
+            profitDerivElement.className = `text-lg font-bold mono ${profitVectorColor}`;
+
+            let explanationHTML = "";
+
+            // Machine Interpretation Logic Tree Matrix
+            if (biologicalDerivative > 0 && economicDerivative > 0) {
+                statusBar.className = "absolute left-0 top-0 bottom-0 w-2 bg-emerald-500 transition-colors duration-300";
+                explanationHTML = `⚡ <span class="text-emerald-400 font-bold">Optimal Acceleration Sub-Zone:</span> At <strong>${x} kg/ha</strong>, the ecosystem holds an explosive positive biological vector ($f'(x) = ${biologicalDerivative.toFixed(3)}$). Critically, every kg of nitrogen added returns <strong>RM ${economicDerivative.toFixed(2)}</strong> in net value after covering costs. This signals the AI automation loop to increase dosage immediately.`;
+            } 
+            else if (biologicalDerivative > 0 && economicDerivative <= 0) {
+                statusBar.className = "absolute left-0 top-0 bottom-0 w-2 bg-amber-500 transition-colors duration-300";
+                explanationHTML = `⚠️ <span class="text-amber-400 font-bold">Economic Deficit Hazard (Law of Diminishing Returns):</span> Intriguing state! Biological derivative is positive ($f'(x) = ${biologicalDerivative.toFixed(3)}$), meaning palms are still producing more fruit. However, the economic profit derivative is negative ($P'(x) = RM ${economicDerivative.toFixed(2)}$). You are spending more on fertilizer than what the extra palm fruit is worth. <strong>Stop additional deployment.</strong>`;
+            } 
+            else if (Math.abs(biologicalDerivative) <= 0.005) {
+                statusBar.className = "absolute left-0 top-0 bottom-0 w-2 bg-cyan-400 transition-colors duration-300";
+                explanationHTML = `🎯 <span class="text-cyan-400 font-bold">Absolute Biological Limit Point ($f'(x) \\approx 0$):</span> The oil palm canopy has hit absolute metabolic limit at <strong>${x} kg/ha</strong>. The derivative slope is completely flat. Adding more fertilizer will yield no additional weight changes. Absolute peak agronomic performance.`;
+            } 
+            else {
+                statusBar.className = "absolute left-0 top-0 bottom-0 w-2 bg-rose-500 transition-colors duration-300";
+                explanationHTML = `🛑 <span class="text-rose-500 font-bold">Metabolic Toxicity and Environmental Destruction:</span> Severe state. The derivative is negative ($f'(x) = ${biologicalDerivative.toFixed(3)}$). Excess nitrogen has caused severe root toxicity and excessive vegetative growth at the expense of fruit bunches. Total crop production drops by <strong>${Math.abs(biologicalDerivative).toFixed(3)} tonnes</strong> for every extra unit added. Leached nitrates are polluting local water tables. <strong>Scale down immediately.</strong>`;
+            }
+
+            document.getElementById('telExplanation').innerHTML = explanationHTML;
+        }
+
+        // Live Event Listeners linking parameters changes to math update models
+        [costInput, priceInput].forEach(element => {
+            element.addEventListener('input', () => {
+                computeOptimalPoints();
+                // If a user has already selected a point, instantly update the text to avoid telemetry mismatch
+                const activeTelX = document.getElementById('telX').innerText;
+                if(activeTelX !== "0") {
+                    executeTelemetryInference(parseInt(activeTelX));
+                }
+            });
+        });
+
+        // Initialize calculations on core runtime startup
+        computeOptimalPoints();
+    </script>
+</body>
+</html>
